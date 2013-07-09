@@ -5,7 +5,7 @@
 #include "TVectorF.h"
 #include "TClonesArray.h"
 
-#include "DTDPGAnalysis/interface/DefineTreeVariables.h"
+#include "UserCode/DTDPGAnalysis/interface/DefineTreeVariables.h"
 
 #include "DataFormats/BeamSpot/interface/BeamSpot.h"
 
