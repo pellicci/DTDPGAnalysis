@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("DTDPGDTAnalyzer")
 
-process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff")
+process.load("DTDPGAnalysis.dt_dpganalysis_common_cff")
 process.dtunpacker.readOutParameters.rosParameters.performDataIntegrityMonitor = False
 process.dtunpacker.readOutParameters.performDataIntegrityMonitor = False
 
@@ -31,13 +31,13 @@ process.MessageLogger = cms.Service("MessageLogger",
                                     destinations = cms.untracked.vstring('cout')
                                     )
 
-process.load("UserCode.DTDPGAnalysis.DTOfflineAnalyzer_cfi")
+process.load("DTDPGAnalysis.DTOfflineAnalyzer_cfi")
 process.DTOfflineAnalyzer.rootFileName = 'DTAnalyzerTest_r58553.root'
 
-process.load("UserCode.DTDPGAnalysis.STAOfflineAnalyzer_cfi")
+process.load("DTDPGAnalysis.STAOfflineAnalyzer_cfi")
 process.STAOfflineAnalyzer.rootFileName = 'DTAnalyzerSTA_r58553.root'
 
-process.load("UserCode.DTDPGAnalysis.DTEffOfflineAnalyzer_cfi")
+process.load("DTDPGAnalysis.DTEffOfflineAnalyzer_cfi")
 process.DTEffOfflineAnalyzer.rootFileName = 'DTEffAnalyzer_r58553.root'
 
 

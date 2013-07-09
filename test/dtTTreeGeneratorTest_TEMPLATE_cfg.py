@@ -14,7 +14,7 @@ process.source = cms.Source("PoolSource",
         fileNames = cms.untracked.vstring('FINALNAME')
 )
 
-process.load("UserCode/DTDPGAnalysis/DTTTreGenerator_cfi")
+process.load("DTDPGAnalysis/DTTTreGenerator_cfi")
 
 process.p = cms.Path(process.myDTNtuple)
 

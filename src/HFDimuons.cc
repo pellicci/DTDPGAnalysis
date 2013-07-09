@@ -2,7 +2,7 @@
 
 #include "TLorentzVector.h"
 
-#include "UserCode/DTDPGAnalysis/interface/HFDimuons.h"
+#include "DTDPGAnalysis/interface/HFDimuons.h"
 
 //#include "AnalysisDataFormats/HeavyFlavorObjects/rootio/TAna01Event.hh"
 //#include "AnalysisDataFormats/HeavyFlavorObjects/rootio/TAnaTrack.hh"

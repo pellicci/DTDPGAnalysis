@@ -3,7 +3,7 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process("DTDPGAnalyis")
 
 
-process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_ColisionsHI_cff")
+process.load("DTDPGAnalysis.dt_dpganalysis_common_ColisionsHI_cff")
 
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
@@ -59,7 +59,7 @@ process.load("Configuration.StandardSequences.MagneticField_38T_cff")
 
 #--------------------------------------------------------
 
-from UserCode.DTDPGAnalysis.DTOfflineAnalyzer_cfi import *
+from DTDPGAnalysis.DTOfflineAnalyzer_cfi import *
 process.DTOfflineAnalyzer.DTLocalTriggerLabel = 'dtunpacker'
 process.DTOfflineAnalyzer.doSA = True
 ##process.DTOfflineAnalyzer.doWheelm2 = False
@@ -85,8 +85,8 @@ process.dtTriggerMonitor.dcc_label   = 'dttfunpacker'
 process.dtTriggerMonitor.process_seg = True
 
 #--------------------------------------------------------
-##process.load("UserCode.DTDPGAnalysis.Filter_DTandPixelActivity_cff")
-##process.load("UserCode.DTDPGAnalysis.Filter_DTActivity_cff")
+##process.load("DTDPGAnalysis.Filter_DTandPixelActivity_cff")
+##process.load("DTDPGAnalysis.Filter_DTActivity_cff")
 
 ##process.load("HLTrigger.HLTfilters.hltLevel1GTSeed_cfi")
 ##process.hltLevel1GTSeed.L1TechTriggerSeeding = cms.bool(True)

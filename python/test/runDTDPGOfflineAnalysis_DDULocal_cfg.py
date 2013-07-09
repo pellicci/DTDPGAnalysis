@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("DTDPGAnalyis")
 
-process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff")
+process.load("DTDPGAnalysis.dt_dpganalysis_common_cff")
 process.DTOfflineAnalyzer.doSA = False
 process.DTOfflineAnalyzer.DTLocalTriggerLabel = 'dtunpackerDDU'
 ##process.DTOfflineAnalyzer.doTBox = False
@@ -106,7 +106,7 @@ process.load("DQM.DTMonitorClient.dtChamberEfficiencyTest_cfi")
 process.load("DQM.DTMonitorClient.dtSegmentAnalysisTest_cfi")
 process.segmentTest.detailedAnalysis = True
 
-process.load("UserCode.DTDPGAnalysis.dtCreateSummaries_cff")
+process.load("DTDPGAnalysis.dtCreateSummaries_cff")
 #process.createDTDPGSummary.DigiHistos   = False
 process.createDTDPGDQMSummary.runNumber    = 1
 process.createDTDPGDQMSummary.rootFileName = "DQM_V0001_R000000001__DT__Offline__DPG.root"

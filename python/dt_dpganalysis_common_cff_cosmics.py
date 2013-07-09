@@ -64,9 +64,9 @@ globalreco = cms.Sequence(CosmicMuonSeedBarrelOnly * offlineBeamSpot * cosmicMuo
 #######################################################################################
 # DT DPG DQM modules follow
 
-from UserCode.DTDPGAnalysis.DTOfflineAnalyzer_Cosmics_cfi import *
-from UserCode.DTDPGAnalysis.STAOfflineAnalyzer_Cosmics_cfi import *
-from UserCode.DTDPGAnalysis.DTEffOfflineAnalyzer_cfi import *
+from DTDPGAnalysis.DTOfflineAnalyzer_Cosmics_cfi import *
+from DTDPGAnalysis.STAOfflineAnalyzer_Cosmics_cfi import *
+from DTDPGAnalysis.DTEffOfflineAnalyzer_cfi import *
 
 
 from DQMServices.Components.MEtoEDMConverter_cfi import *

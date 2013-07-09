@@ -31,7 +31,7 @@ process.source = cms.Source("PoolSource",
     )
 )
 
-process.load("UserCode/DTDPGAnalysis/DTTTreGenerator_cfi")
+process.load("DTDPGAnalysis/DTTTreGenerator_cfi")
 process.myDTNtuple.outputFile = "/data/p/pellicci/DPG/Dumper/rootuples/DTTree_tmp.root"
 
 #for RAW

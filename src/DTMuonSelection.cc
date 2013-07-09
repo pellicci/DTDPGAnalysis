@@ -3,7 +3,7 @@
 //         Created:  Tue May 4 15:56:24 CEST 2010
 
 // user include files
-#include "UserCode/DTDPGAnalysis/interface/DTMuonSelection.h"
+#include "DTDPGAnalysis/interface/DTMuonSelection.h"
 
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"

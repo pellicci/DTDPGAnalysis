@@ -16,7 +16,7 @@
  ************************************************************************/
 
 /* This Class Header */
-#include "UserCode/DTDPGAnalysis/src/DTEffOfflineAnalyzer.h"
+#include "DTDPGAnalysis/src/DTEffOfflineAnalyzer.h"
 
 /* Collaborating Class Header */
 #include "FWCore/Framework/interface/MakerMacros.h"

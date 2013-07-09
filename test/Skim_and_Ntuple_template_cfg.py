@@ -71,7 +71,7 @@ process.DTMuonSelection = cms.EDFilter("DTMuonSelection",
 )
 
 
-process.load("UserCode/DTDPGAnalysis/DTTTreGenerator_cfi")
+process.load("DTDPGAnalysis/DTTTreGenerator_cfi")
 process.options = cms.untracked.PSet(wantSummary = cms.untracked.bool(True))
 
 process.myDTNtuple.outputFile = "FILENAME"

@@ -5,7 +5,7 @@ Francesca R. Cavallo
 */
 
 
-#include <UserCode/DTDPGAnalysis/src/CheckDeadChannels.h>
+#include <DTDPGAnalysis/src/CheckDeadChannels.h>
 
 
 
