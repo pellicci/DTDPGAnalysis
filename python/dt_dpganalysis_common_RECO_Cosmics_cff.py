@@ -83,14 +83,14 @@ reco       = cms.Sequence(dt1DRecHits * dt2DSegments * dt4DSegments)
 #######################################################################################
 # DT DPG DQM modules follow
 
-from DTDPGAnalysis.DTOfflineAnalyzer_Cosmics_cfi import *
+from UserCode.DTDPGAnalysis.DTOfflineAnalyzer_Cosmics_cfi import *
 ##DTOfflineAnalyzer.SALabel = 'standAloneMuons'
 DTOfflineAnalyzer.SALabel = 'cosmicMuons'
-from DTDPGAnalysis.STAOfflineAnalyzer_Cosmics_cfi import *
+from UserCode.DTDPGAnalysis.STAOfflineAnalyzer_Cosmics_cfi import *
 ##STAOfflineAnalyzer.SALabel = 'standAloneMuons'
 STAOfflineAnalyzer.SALabel = 'cosmicMuons'
 
-from DTDPGAnalysis.DTEffOfflineAnalyzer_cfi import *
+from UserCode.DTDPGAnalysis.DTEffOfflineAnalyzer_cfi import *
 
 
 from DQMServices.Components.MEtoEDMConverter_cfi import *

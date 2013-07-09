@@ -6,7 +6,7 @@
  */
 
 
-#include <DTDPGAnalysis/src/DTDPGCreateWheelSummary.h>
+#include <UserCode/DTDPGAnalysis/src/DTDPGCreateWheelSummary.h>
 
 // Framework
 #include <FWCore/Framework/interface/Event.h>

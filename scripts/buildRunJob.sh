@@ -25,7 +25,7 @@ streco=RECOFILES
 straw=RAWFILES
 stfile=FILENAME
 # create python
-sed -e "/$streco/r $1_reco_files.txt" -e "/$streco/d" $CMSSW_BASE/src/DTDPGAnalysis/test/$template | sed  -e "/$straw/r $1_raw_files.txt" -e "/$straw/d" | sed  -e "s/$stfile/DTNtuple_run$1.root/g" > $CMSSW_BASE/src/$name
+sed -e "/$streco/r $1_reco_files.txt" -e "/$streco/d" $CMSSW_BASE/src/UserCode/DTDPGAnalysis/test/$template | sed  -e "/$straw/r $1_raw_files.txt" -e "/$straw/d" | sed  -e "s/$stfile/DTNtuple_run$1.root/g" > $CMSSW_BASE/src/$name
 rm $1_*files*txt
 echo "Python file for processing run $1 created. Job should be running on $events events..."
 # create shell job

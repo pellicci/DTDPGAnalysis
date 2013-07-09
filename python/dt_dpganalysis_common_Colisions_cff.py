@@ -77,14 +77,14 @@ globalreco = cms.Sequence(standAloneMuonSeeds * offlineBeamSpot * standAloneMuon
 #######################################################################################
 # DT DPG DQM modules follow
 
-from DTDPGAnalysis.DTOfflineAnalyzer_cfi import *
+from UserCode.DTDPGAnalysis.DTOfflineAnalyzer_cfi import *
 ###DTOfflineAnalyzer.SALabel = 'standAloneMuons'  ## Problems with this collection with 52X data 2012 
 DTOfflineAnalyzer.SALabel = 'standAloneSETMuons'
-from DTDPGAnalysis.STAOfflineAnalyzer_cfi import *
+from UserCode.DTDPGAnalysis.STAOfflineAnalyzer_cfi import *
 ###STAOfflineAnalyzer.SALabel = 'standAloneMuons'  ## Problems with this collection with 52X data 2012 
 STAOfflineAnalyzer.SALabel = 'standAloneSETMuons'
 
-from DTDPGAnalysis.DTEffOfflineAnalyzer_cfi import *
+from UserCode.DTDPGAnalysis.DTEffOfflineAnalyzer_cfi import *
 
 
 from DQMServices.Components.MEtoEDMConverter_cfi import *

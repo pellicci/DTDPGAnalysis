@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("DTDPGAnalyis")
 
-process.load("DTDPGAnalysis.dt_dpganalysis_common_cff")
+process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff")
 
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(1000) )
@@ -44,13 +44,13 @@ process.load("MagneticField.Engine.volumeBasedMagneticField_1103l_cfi") ##
 # 0.0T
 # process.load("MagneticField.Engine.uniformMagneticField_cfi")
 
-process.load("DTDPGAnalysis.DTOfflineAnalyzer_cfi")
+process.load("UserCode.DTDPGAnalysis.DTOfflineAnalyzer_cfi")
 process.DTOfflineAnalyzer.rootFileName = 'DTAnalyzerTest_r58553.root'
 
-process.load("DTDPGAnalysis.STAOfflineAnalyzer_cfi")
+process.load("UserCode.DTDPGAnalysis.STAOfflineAnalyzer_cfi")
 process.STAOfflineAnalyzer.rootFileName = 'DTAnalyzerSTA_r58553.root'
 
-process.load("DTDPGAnalysis.DTEffOfflineAnalyzer_cfi")
+process.load("UserCode.DTDPGAnalysis.DTEffOfflineAnalyzer_cfi")
 process.DTEffOfflineAnalyzer.rootFileName = 'DTEffAnalyzer_r58553.root'
 
 

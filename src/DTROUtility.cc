@@ -6,7 +6,7 @@
  *  \author G. Cerminara - INFN Torino
  */
 
-#include "DTDPGAnalysis/src/DTROUtility.h"
+#include "UserCode/DTDPGAnalysis/src/DTROUtility.h"
 
 #include "TFile.h"
 #include "TH1F.h"

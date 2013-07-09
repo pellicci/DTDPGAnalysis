@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("DTTTrigCalib")
 
-process.load("DTDPGAnalysis.dt_dpganalysis_common_cff")
+process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff")
 
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )

@@ -13,7 +13,7 @@
 #include "FWCore/Framework/interface/Event.h"
 #include "FWCore/ParameterSet/interface/ParameterSet.h"
 
-#include "DTDPGAnalysis/src/GlobalMuTriggerFilter.h"
+#include "UserCode/DTDPGAnalysis/src/GlobalMuTriggerFilter.h"
 
 
 

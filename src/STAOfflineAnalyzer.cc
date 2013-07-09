@@ -14,7 +14,7 @@
  *********************************/
 
 /* This Class Header */
-#include "DTDPGAnalysis/src/STAOfflineAnalyzer.h"
+#include "UserCode/DTDPGAnalysis/src/STAOfflineAnalyzer.h"
 
 /* Collaborating Class Header */
 #include "FWCore/Framework/interface/MakerMacros.h"

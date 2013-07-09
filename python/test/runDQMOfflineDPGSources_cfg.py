@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("DTDPGDQM1")
 
-process.load("DTDPGAnalysis.dt_dpganalysis_common_cff")
+process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff")
 
 
 process.load("DQMServices.Components.MEtoEDMConverter_cfi")

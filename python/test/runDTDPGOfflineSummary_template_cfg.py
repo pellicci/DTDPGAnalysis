@@ -2,7 +2,7 @@ import FWCore.ParameterSet.Config as cms
 
 process = cms.Process("DTDPGDQM2")
 
-process.load("DTDPGAnalysis.dt_dpganalysis_common_cff")
+process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff")
 
 process.load("DQMServices.Core.DQM_cfg")
 process.load("DQMServices.Components.EDMtoMEConverter_cff")
@@ -41,7 +41,7 @@ process.load("DQM.DTMonitorClient.dtChamberEfficiencyTest_cfi")
 process.load("DQM.DTMonitorClient.dtSegmentAnalysisTest_cfi")
 process.segmentTest.detailedAnalysis = True
 
-process.load("DTDPGAnalysis.dtCreateSummaries_cff")
+process.load("UserCode.DTDPGAnalysis.dtCreateSummaries_cff")
 #process.createDTDPGSummary.DigiHistos   = False
 process.createDTDPGDQMSummary.runNumber    = INSERTRUN
 process.createDTDPGDQMSummary.rootFileName = "DQM_V0001_R0000INSERTRUN__DT__Offline__DPG.root"

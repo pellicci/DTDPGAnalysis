@@ -66,7 +66,7 @@ process.source = cms.Source("PoolSource",
     )
 )
 
-process.load("DTDPGAnalysis/DTTTreGenerator_cfi")
+process.load("UserCode/DTDPGAnalysis/DTTTreGenerator_cfi")
 process.myDTNtuple.runOnSimulation = True
 process.myDTNtuple.outputFile = "/data/p/pellicci/DPG/Dumper/rootuples/DTTree_MC.root"
 

@@ -11,8 +11,8 @@
  */
 
 
-#include <DTDPGAnalysis/src/DTDPGCreateAnalyzerSummary.h>
-#include "DTDPGAnalysis/src/DTROUtility.h"
+#include <UserCode/DTDPGAnalysis/src/DTDPGCreateAnalyzerSummary.h>
+#include "UserCode/DTDPGAnalysis/src/DTROUtility.h"
 
 // Framework
 #include <FWCore/Framework/interface/Event.h>

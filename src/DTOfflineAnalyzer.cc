@@ -19,7 +19,7 @@
 
 
 /* This Class Header */
-#include "DTDPGAnalysis/src/DTOfflineAnalyzer.h"
+#include "UserCode/DTDPGAnalysis/src/DTOfflineAnalyzer.h"
 
 /* Collaborating Class Header */
 #include "FWCore/Framework/interface/MakerMacros.h"
@@ -46,8 +46,8 @@ using namespace edm;
 #include "Geometry/Records/interface/MuonGeometryRecord.h"
 #include "DataFormats/DTRecHit/interface/DTRecHitCollection.h"
 #include "DataFormats/DTRecHit/interface/DTRangeMapAccessor.h"
-#include "DTDPGAnalysis/src/DTMeanTimer.h"
-#include "DTDPGAnalysis/src/DTSegmentResidual.h"
+#include "UserCode/DTDPGAnalysis/src/DTMeanTimer.h"
+#include "UserCode/DTDPGAnalysis/src/DTSegmentResidual.h"
 
 
 #include "Geometry/Records/interface/GlobalTrackingGeometryRecord.h"

@@ -11,8 +11,8 @@
  */
 
 
-#include <DTDPGAnalysis/src/DTDPGCreateSummary.h>
-#include "DTDPGAnalysis/src/DTROUtility.h"
+#include <UserCode/DTDPGAnalysis/src/DTDPGCreateSummary.h>
+#include "UserCode/DTDPGAnalysis/src/DTROUtility.h"
 
 // Framework
 #include <FWCore/Utilities/interface/Exception.h>

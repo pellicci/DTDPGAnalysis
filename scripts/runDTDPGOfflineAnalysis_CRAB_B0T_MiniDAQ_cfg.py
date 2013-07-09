@@ -3,7 +3,7 @@ import FWCore.ParameterSet.Config as cms
 process = cms.Process("DTDPGAnalyis")
 
 
-process.load("DTDPGAnalysis.dt_dpganalysis_common_cff_cosmics_miniDAQ")
+process.load("UserCode.DTDPGAnalysis.dt_dpganalysis_common_cff_cosmics_miniDAQ")
 
 
 
@@ -62,7 +62,7 @@ process.load("Configuration.StandardSequences.MagneticField_0T_cff")
 
 #--------------------------------------------------------
 
-from DTDPGAnalysis.DTOfflineAnalyzer_cfi import *
+from UserCode.DTDPGAnalysis.DTOfflineAnalyzer_cfi import *
 process.DTOfflineAnalyzer.DTLocalTriggerLabel = 'dtunpacker'
 process.DTOfflineAnalyzer.doSA = True
 ##process.DTOfflineAnalyzer.doWheelm2 = False
