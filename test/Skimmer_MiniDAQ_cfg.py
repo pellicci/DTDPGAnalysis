@@ -5,7 +5,7 @@ process = cms.Process("Skim")
 process.load("FWCore.MessageService.MessageLogger_cfi")
 process.load('Configuration/StandardSequences/Services_cff')
 
-process.load('Configuration.StandardSequences.GeometryIdeal_cff')
+process.load('Configuration.Geometry.GeometryIdeal_cff')
 process.load('Configuration.EventContent.EventContent_cff')
 
 process.load('RecoLuminosity.LumiProducer.lumiProducer_cff')
@@ -19,42 +19,19 @@ process.dtunpacker.readOutParameters.rosParameters.debug = False
 #for RAW
 process.load("Configuration.StandardSequences.MagneticField_cff")
 process.load('Configuration.StandardSequences.RawToDigi_Data_cff')
-process.load("Configuration.StandardSequences.Reconstruction_cff")
+process.load("Configuration.StandardSequences.ReconstructionCosmics_cff")
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = "GR_P_V32::All"
+process.GlobalTag.globaltag = "GR_P_V41::All"
 
 process.load('EventFilter.ScalersRawToDigi.ScalersRawToDigi_cfi')
 
 process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 
-process.source = cms.Source("PoolSource",
-    # replace 'myfile.root' with the source file you want to use
-    fileNames = cms.untracked.vstring(
-        'file:MiniDaq.root'
-    )
-)
-
-#this is to select collisions
-process.primaryVertexFilter = cms.EDFilter("VertexSelector",
-   src = cms.InputTag("offlinePrimaryVertices"),
-   cut = cms.string("!isFake && ndof > 4 && abs(z) <= 15 && position.Rho <= 2"), # tracksSize() > 3 for the older cut
-   filter = cms.bool(True),   # otherwise it won't filter the events, just produce an empty vertex collection.
-)
-
-process.noscraping = cms.EDFilter("FilterOutScraping",
-                                  applyfilter = cms.untracked.bool(True),
-                                  debugOn = cms.untracked.bool(False),
-                                  numtrack = cms.untracked.uint32(10),
-                                  thresh = cms.untracked.double(0.25)
-)
-
-process.DTMuonSelection = cms.EDFilter("DTMuonSelection",
-                                 src = cms.InputTag('muons'),
-                                 dtSegmentLabel = cms.InputTag('dt4DSegments'),
-                                 etaMin = cms.double(-1.25),
-                                 etaMax = cms.double(1.25),
-                                 ptMin = cms.double(3.)
+process.source = cms.Source("NewEventStreamFileReader",
+           fileNames = cms.untracked.vstring(
+           'file:Minidaq.dat'
+         )
 )
 
 process.output = cms.OutputModule("PoolOutputModule",
@@ -91,8 +68,6 @@ process.output = cms.OutputModule("PoolOutputModule",
 )
 
 #for RAW
-process.p = cms.Path(process.RawToDigi * process.reconstruction * process.primaryVertexFilter * process.noscraping * process.DTMuonSelection * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
+process.p = cms.Path(process.RawToDigi * process.reconstructionCosmics * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
 
-#for RAW-RECO
-#process.p = cms.Path(process.RawToDigi * process.primaryVertexFilter * process.noscraping * process.DTMuonSelection * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
 process.e = cms.EndPath(process.output)

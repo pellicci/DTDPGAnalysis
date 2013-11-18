@@ -31,7 +31,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
     fileNames = cms.untracked.vstring(
-        'file:/data/p/pellicci/DPG/Dumper/rootuples/Data_Run2011B_DoubleMu_RAW.root'
+        'file:MiniDaq.root'
     )
 )
 
@@ -40,13 +40,6 @@ process.primaryVertexFilter = cms.EDFilter("VertexSelector",
    src = cms.InputTag("offlinePrimaryVertices"),
    cut = cms.string("!isFake && ndof > 4 && abs(z) <= 15 && position.Rho <= 2"), # tracksSize() > 3 for the older cut
    filter = cms.bool(True),   # otherwise it won't filter the events, just produce an empty vertex collection.
-)
-
-process.noscraping = cms.EDFilter("FilterOutScraping",
-                                  applyfilter = cms.untracked.bool(True),
-                                  debugOn = cms.untracked.bool(False),
-                                  numtrack = cms.untracked.uint32(10),
-                                  thresh = cms.untracked.double(0.25)
 )
 
 process.DTMuonSelection = cms.EDFilter("DTMuonSelection",
@@ -91,8 +84,8 @@ process.output = cms.OutputModule("PoolOutputModule",
 )
 
 #for RAW
-process.p = cms.Path(process.RawToDigi * process.reconstruction * process.primaryVertexFilter * process.noscraping * process.DTMuonSelection * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
+process.p = cms.Path(process.RawToDigi * process.reconstruction * process.primaryVertexFilter * process.DTMuonSelection * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
 
 #for RAW-RECO
-#process.p = cms.Path(process.RawToDigi * process.primaryVertexFilter * process.noscraping * process.DTMuonSelection * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
+#process.p = cms.Path(process.RawToDigi * process.primaryVertexFilter * process.DTMuonSelection * process.dtunpacker * process.dttfunpacker * process.lumiProducer)
 process.e = cms.EndPath(process.output)
