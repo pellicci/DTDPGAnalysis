@@ -74,6 +74,7 @@
 #include "UserCode/DTDPGAnalysis/interface/TTreeGenerator.h"
 #include <iostream>
 
+using namespace std;
 
 TTreeGenerator::TTreeGenerator(const edm::ParameterSet& pset)
 {
@@ -144,9 +145,11 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
 
   //retrieve the luminosity
   edm::Handle<LumiScalersCollection> lumiScalers;
-  event.getByLabel(scalersSource_, lumiScalers);
-  LumiScalersCollection::const_iterator lumiIt = lumiScalers->begin();
-  lumiperblock = lumiIt->instantLumi();
+  if(!runOnMiniDAQ_){
+    event.getByLabel(scalersSource_, lumiScalers);
+    LumiScalersCollection::const_iterator lumiIt = lumiScalers->begin();
+    lumiperblock = lumiIt->instantLumi();
+  }
 
   //retrieve the collections you are interested on in the event
   edm::Handle<DTDigiCollection> dtdigis;
@@ -158,7 +161,7 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
   context.get<GlobalTrackingGeometryRecord>().get(theTrackingGeometry);
 
   edm::Handle<reco::VertexCollection> privtxs;
-  event.getByLabel(PrimaryVertexTag_, privtxs);
+  if(!runOnMiniDAQ_) event.getByLabel(PrimaryVertexTag_, privtxs);
 
   edm::Handle<CSCSegmentCollection> cscsegments;
   event.getByLabel(cscSegmentLabel_, cscsegments);
@@ -179,7 +182,7 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
   if(runOnRaw_ && !runOnSimulation_) event.getByLabel(dtTrigDDULabel_,localTriggerDDU);
 
   edm::Handle<reco::MuonCollection> MuList;
-  event.getByLabel(staMuLabel_,MuList);
+  if(!runOnMiniDAQ_) event.getByLabel(staMuLabel_,MuList);
 
   edm::Handle<L1MuGMTReadoutCollection> gmtrc;
   if(runOnRaw_) event.getByLabel(gmtLabel_,gmtrc);
@@ -204,26 +207,30 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
   context.get<TrackingComponentsRecord>().get("SmartPropagatorAny",propagatorAlong);
   context.get<TrackingComponentsRecord>().get("SmartPropagatorAnyOpposite", propagatorOpposite);
 
-//get the magnetic field
+  //get the magnetic field
   context.get<IdealMagneticFieldRecord>().get(theBField);
 
   //Fill the event info block
   runnumber = event.run();
-  lumiblock = event.getLuminosityBlock().luminosityBlock();
   eventNumber = event.eventAuxiliary().event();
   timestamp = event.eventAuxiliary().time().value();
-  bunchXing = event.eventAuxiliary().bunchCrossing();
-  orbitNum = event.eventAuxiliary().orbitNumber();
+  if(!runOnMiniDAQ_){
+    lumiblock = event.getLuminosityBlock().luminosityBlock();
+    bunchXing = event.eventAuxiliary().bunchCrossing();
+    orbitNum = event.eventAuxiliary().orbitNumber();
+  }
 
-  edm::Handle<LumiDetails> lumiDetails;
-  event.getLuminosityBlock().getByLabel("lumiProducer", lumiDetails);
-  if(lumiDetails->isValid()){
-    beam1Intensity = lumiDetails->lumiBeam1Intensity(bunchXing);
-    beam2Intensity = lumiDetails->lumiBeam2Intensity(bunchXing);
+  if(!runOnMiniDAQ_){
+    edm::Handle<LumiDetails> lumiDetails; 
+    event.getLuminosityBlock().getByLabel("lumiProducer", lumiDetails);
+    if(lumiDetails->isValid()){
+      beam1Intensity = lumiDetails->lumiBeam1Intensity(bunchXing);
+      beam2Intensity = lumiDetails->lumiBeam2Intensity(bunchXing);
+    }
   }
 
   //Primary vertex
-  if((*privtxs).size() != 0){
+  if(!runOnMiniDAQ_ && (*privtxs).size() != 0){
     PV_x = (*privtxs)[0].position().x();
     PV_y = (*privtxs)[0].position().y();
     PV_z = (*privtxs)[0].position().z();
@@ -265,8 +272,8 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
   //DCC
   if(runOnRaw_) fill_dcc_variables(localTriggerDCC);
   if(runOnRaw_) fill_dccth_variables(localTriggerDCC_Th);
-  if(runOnRaw_) fill_simdcc_variables(localTriggerSimDCC);
-  if(runOnRaw_) fill_simdccth_variables(localTriggerSimDCC_Th);
+  if(runOnRaw_ && !runOnMiniDAQ_) fill_simdcc_variables(localTriggerSimDCC);
+  if(runOnRaw_ && !runOnMiniDAQ_) fill_simdccth_variables(localTriggerSimDCC_Th);
 
   //DDU
   if(runOnRaw_ && !runOnSimulation_) fill_ddu_variables(localTriggerDDU);
@@ -275,17 +282,17 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
   if(!runOnMiniDAQ_) fill_muons_variables(MuList);
 
   //GMT
-  if(runOnRaw_) fill_gmt_variables(gmtrc);
+  if(runOnRaw_ && !runOnMiniDAQ_) fill_gmt_variables(gmtrc);
 
   //GT
-  if(runOnRaw_) fill_gt_variables(gtrc,menu);
+  if(runOnRaw_ && !runOnMiniDAQ_) fill_gt_variables(gtrc,menu);
     
   //HLT
   fill_hlt_variables(event,hltresults);
 
   // RPC
   fill_rpc_variables(event,rpcHits);
-  
+
   tree_->Fill();
 
   return;
