@@ -110,6 +110,7 @@ TTreeGenerator::TTreeGenerator(const edm::ParameterSet& pset)
 
   runOnRaw_        = pset.getParameter<bool>("runOnRaw");
   runOnSimulation_ = pset.getParameter<bool>("runOnSimulation");
+  runOnMiniDAQ_    = pset.getParameter<bool>("runOnMiniDAQ");
 
   outFile_         = pset.getParameter<std::string>("outputFile");
 
@@ -136,8 +137,10 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
 {
   //retrieve the beamspot info
   edm::Handle<reco::BeamSpot> recoBeamSpotHandle;
-  event.getByLabel(beamSpotTag_ ,recoBeamSpotHandle);
-  beamspot = *recoBeamSpotHandle; 
+  if(!runOnMiniDAQ_){
+    event.getByLabel(beamSpotTag_ ,recoBeamSpotHandle);
+    beamspot = *recoBeamSpotHandle; 
+  }
 
   //retrieve the luminosity
   edm::Handle<LumiScalersCollection> lumiScalers;
@@ -269,7 +272,7 @@ void TTreeGenerator::analyze(const edm::Event& event, const edm::EventSetup& con
   if(runOnRaw_ && !runOnSimulation_) fill_ddu_variables(localTriggerDDU);
 
   //MUONS
-  fill_muons_variables(MuList);
+  if(!runOnMiniDAQ_) fill_muons_variables(MuList);
 
   //GMT
   if(runOnRaw_) fill_gmt_variables(gmtrc);

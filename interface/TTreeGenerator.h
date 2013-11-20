@@ -77,6 +77,7 @@ private:
 
   bool runOnRaw_;
   bool runOnSimulation_;
+  bool runOnMiniDAQ_;
 
   std::string outFile_;
 

@@ -28,5 +28,6 @@ myDTNtuple = cms.EDAnalyzer('TTreeGenerator',
                               beamSpotTag = cms.InputTag("offlineBeamSpot"),
                               scalersResults = cms.InputTag("scalersRawToDigi"),
                               runOnRaw = cms.bool(True),
-                              runOnSimulation = cms.bool(False)
+                              runOnSimulation = cms.bool(False),
+                              runOnMiniDAQ = cms.bool(False)
 )

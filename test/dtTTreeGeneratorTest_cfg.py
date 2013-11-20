@@ -15,24 +15,25 @@ process = cms.Process("myDTNtuple")
 
 
 process.load("Configuration.StandardSequences.MagneticField_cff")
-process.load('Configuration/StandardSequences/GeometryIdeal_cff')
+process.load('Configuration.Geometry.GeometryIdeal_cff')
 
 process.load("RecoMuon.TrackingTools.MuonServiceProxy_cff")
 
 process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")
-process.GlobalTag.globaltag = "GR_P_V32::All"
+process.GlobalTag.globaltag = "GR_P_V41::All"
 
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10) )
 
 process.source = cms.Source("PoolSource",
         skipEvents = cms.untracked.uint32(0),
         fileNames = cms.untracked.vstring(
-'file:DTFiltered.root'
+       '/store/caf/user/pellicci/DPG/MiniDAQReco/Minidaq.00214419.0001.A.storageManager.00.0001.root'
     )
 )
 
 process.load("UserCode/DTDPGAnalysis/DTTTreGenerator_cfi")
-process.myDTNtuple.outputFile = "/data/p/pellicci/DPG/Dumper/rootuples/DTTree_tmp.root"
+process.myDTNtuple.outputFile = "DTTree_tmp.root"
+process.myDTNtuple.runOnMiniDAQ = True
 
 #for RAW
 #process.p = cms.Path(process.RawToDigi * process.dtunpacker * process.dttfunpacker * process.reconstruction * process.myDTNtuple)
