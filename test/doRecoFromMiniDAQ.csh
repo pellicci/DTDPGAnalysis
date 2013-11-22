@@ -1,9 +1,11 @@
 #!/bin/tcsh
 
-cd ~/scratch0/DPG/Upgrade/MiniDAQReco/CMSSW_5_3_8_patch3/src/UserCode/DTDPGAnalysis/test
+cd /afs/cern.ch/user/p/pellicci/scratch0/DPG/Upgrade/MiniDAQReco/CMSSW_5_3_8_patch3/src/UserCode/DTDPGAnalysis/test
 cmsenv
 
 set infilearray=`eos ls -lh /eos/cms/store/caf/user/dtdqm/InputMiniDAQRuns/dat/ | awk '{print $9}'`
+
+touch processedDAQruns.txt
 
 foreach runnumber ($infilearray)
 
